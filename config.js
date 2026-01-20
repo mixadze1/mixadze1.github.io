@@ -4,9 +4,9 @@ const profileConfig = {
   summary: "7+ years in development · Architecture · Scalability · Performance · Live ops",
   location: "Georgia · GMT +4",
   avatar: "assets/avatar.png",
-  labels: ["Unity", "C#", "TypeScript", "GO", "ECS Morpeh", "Zenject"],
+  labels: ["Unity", "C#", "ECS", "DI", "TypeScript", "GO"],
   profileText:
-    "Game Developer with 7+ years of experience building scalable systems, meta mechanics, and live features. Experienced in mobile and casual genres, balancing performance, clean architecture, and measurable product growth.",
+    "Game Developer with 7+ years of experience building scalable systems, meta mechanics, and live features. Experienced in mobile, PC, balancing performance, clean architecture, and measurable product growth.",
   profileTags: [
     "Architecture",
     "Analytics",
