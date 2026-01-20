@@ -346,6 +346,32 @@ a {
   color: #64748b;
 }
 
+.preview-card--large {
+  min-width: 320px;
+  max-width: 400px;
+  padding: 16px;
+}
+
+.preview-media--large {
+  height: 240px;
+}
+
+.preview-image--large {
+  height: 240px;
+}
+
+.preview-info--large {
+  gap: 8px;
+  padding: 12px 4px 0;
+}
+
+.preview-description {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #334155;
+}
+
 .education {
   margin: 0;
   line-height: 1.7;

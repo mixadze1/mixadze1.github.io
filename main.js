@@ -76,6 +76,10 @@ const setContacts = (contacts) => {
   if (telegram) {
     telegram.href = contacts.telegram;
   }
+  const whatsapp = document.querySelector('[data-field="whatsapp"]');
+  if (whatsapp) {
+    whatsapp.href = contacts.whatsapp;
+  }
   const github = document.querySelector('[data-field="github"]');
   if (github) {
     github.href = contacts.github;
@@ -130,6 +134,60 @@ const setCompanyGames = (companyGames) => {
   renderGamePreviews('[data-field="company-games-bondigame"]', companyGames.bondigame);
 };
 
+const renderPetProjects = (selector, projects) => {
+  const container = document.querySelector(selector);
+  if (!container) {
+    return;
+  }
+  container.innerHTML = "";
+  projects.forEach((project) => {
+    const card = document.createElement("div");
+    card.className = "preview-card preview-card--large";
+
+    const media = document.createElement("a");
+    media.className = "preview-media preview-media--large";
+    media.href = project.url;
+    media.target = "_blank";
+    media.rel = "noreferrer";
+
+    const image = document.createElement("img");
+    image.className = "preview-image preview-image--large";
+    image.src = project.image;
+    image.alt = project.title;
+
+    const info = document.createElement("div");
+    info.className = "preview-info preview-info--large";
+
+    const title = document.createElement("a");
+    title.className = "preview-title";
+    title.href = project.url;
+    title.target = "_blank";
+    title.rel = "noreferrer";
+    title.textContent = project.title;
+
+    const description = document.createElement("p");
+    description.className = "preview-description";
+    description.textContent = project.description;
+
+    const labelsRow = document.createElement("div");
+    labelsRow.className = "label-row";
+    project.labels.forEach((label) => {
+      const labelSpan = document.createElement("span");
+      labelSpan.className = "label label--ghost";
+      labelSpan.textContent = label;
+      labelsRow.appendChild(labelSpan);
+    });
+
+    media.appendChild(image);
+    info.appendChild(title);
+    info.appendChild(description);
+    info.appendChild(labelsRow);
+    card.appendChild(media);
+    card.appendChild(info);
+    container.appendChild(card);
+  });
+};
+
 const applyProfileConfig = (config) => {
   setText('[data-field="name"]', config.name);
   setText('[data-field="role"]', config.role);
@@ -144,6 +202,7 @@ const applyProfileConfig = (config) => {
   setCompanyLogos(config.companyLogos);
   setCompanyPeriods(config.companyPeriods);
   setCompanyGames(config.companyGames);
+  renderPetProjects('[data-field="pet-projects"]', config.petProjects);
 };
 
 document.addEventListener("DOMContentLoaded", () => {

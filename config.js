@@ -4,7 +4,7 @@ const profileConfig = {
   summary: "7+ years in development · Architecture · Scalability · Performance · Live ops",
   location: "Georgia · GMT +4",
   avatar: "assets/avatar.png",
-  labels: ["Unity", "C#", "ECS", "DI", "TypeScript", "GO"],
+  labels: ["C# .Net", "ECS", "TS", "GO", "AWS", "Unity"],
   profileText:
     "Game Developer with 7+ years of experience building scalable systems, meta mechanics, and live features. Experienced in mobile, PC, balancing performance, clean architecture, and measurable product growth.",
   profileTags: [
@@ -18,6 +18,7 @@ const profileConfig = {
   contacts: {
     email: "mixadze.1.1.1@gmail.com",
     telegram: "https://t.me/mixadze1",
+    whatsapp: "https://wa.me/995599188096",
     github: "https://github.com/mixadze1",
     linkedin: "https://www.linkedin.com/in/michael-arustamian/",
   },
@@ -119,5 +120,29 @@ const profileConfig = {
       },
     ],
   },
+  petProjects: [
+    {
+      title: "Sort IT",
+      description: "Casual sorting puzzle with clean UX and fast iteration loop.",
+      url: "https://play.google.com/store/apps/details?id=triple.sorting.match.puzzle",
+      image: "assets/media/sort-it.png",
+      labels: ["Unity", "Mobile"],
+    },
+    {
+      title: "Shooter with ECS Morpeh",
+      description: "Gameplay systems built with a data-oriented ECS approach.",
+      url: "https://github.com/mixadze1/morpeh.example.shooter",
+      image: "assets/media/shooter-ecs.jpg",
+      labels: ["ECS", "Performance"],
+    },
+    {
+      title: "Merge Cube 2048",
+      description: "Hybrid merge + physics mechanics designed for short sessions.",
+      url: "https://play.google.com/store/apps/details?id=chain.block.merge.numbers.puzzle",
+      image: "assets/media/merge-cube-2048.png",
+      labels: ["Unity", "Mobile"],
+    },
+  
+  ],
 };
 
