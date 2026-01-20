@@ -32,83 +32,83 @@ const profileConfig = {
       {
         title: "Hexa Stack",
         url: "#",
-        image: "assets/media/hexa-stack.jpg",
+        image: "assets/media/hexa-stack.png",
       },
       {
         title: "Match Junk",
         url: "#",
-        image: "assets/media/match-junk.jpg",
+        image: "assets/media/match-junk.png",
       },
     ],
     highcore: [
       {
         title: "Roadside Empire",
         url: "#",
-        image: "assets/media/roadside-empire.jpg",
+        image: "assets/media/roadside-empire.png",
       },
       {
         title: "Giant Rush",
         url: "#",
-        image: "assets/media/giant-rush.jpg",
+        image: "assets/media/Giant-rush.png",
       },
       {
         title: "Tanks A Lot",
         url: "#",
-        image: "assets/media/tanks-a-lot.jpg",
+        image: "assets/media/tanks-a-lot.png",
       },
     ],
     smartspell: [
       {
         title: "Race Arena",
         url: "#",
-        image: "assets/media/race-arena.jpg",
+        image: "assets/media/race-arena.png",
       },
       {
         title: "Pixel Drive",
         url: "#",
-        image: "assets/media/pixel-drive.jpg",
+        image: "assets/media/pixel-drive.png",
       },
       {
         title: "Throne Defense",
         url: "#",
-        image: "assets/media/throne-defense.jpg",
+        image: "assets/media/throne-defense.png",
       },
       {
         title: "Turret IO",
         url: "#",
-        image: "assets/media/turret-io.jpg",
+        image: "assets/media/turret-io.png",
       },
     ],
     bondigame: [
       {
         title: "Project DOP",
         url: "#",
-        image: "assets/media/project-dop.jpg",
+        image: "assets/media/project-dop.png",
       },
       {
         title: "Block IO",
         url: "#",
-        image: "assets/media/block-io.jpg",
+        image: "assets/media/block-io.png",
       },
       {
         title: "Idle Snack Bar",
         url: "#",
-        image: "assets/media/idle-snack-bar.jpg",
+        image: "assets/media/idle-snack-bar.png",
       },
       {
         title: "Paints 3D",
         url: "#",
-        image: "assets/media/paints-3d.jpg",
+        image: "assets/media/paints-3d.png",
       },
       {
         title: "Prison Manager Idle",
         url: "#",
-        image: "assets/media/prison-manager-idle.jpg",
+        image: "assets/media/prison-manager-idle.png",
       },
       {
         title: "Paint 3D",
         url: "#",
-        image: "assets/media/paint-3d.jpg",
+        image: "assets/media/paint-3d.png",
       },
     ],
   },
