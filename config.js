@@ -4,7 +4,7 @@ const profileConfig = {
   summary: "7+ years in development · Architecture · Scalability · Performance · Live ops",
   location: "Georgia · GMT +4",
   avatar: "assets/avatar.png",
-  labels: ["C# .Net", "ECS", "TS", "GO", "AWS", "Unity"],
+  labels: ["C# .Net", "ECS", "TS", "AWS", "Unity"],
   profileText:
     "Game Developer with 7+ years of experience building scalable systems, meta mechanics, and live features. Experienced in mobile, PC, balancing performance, clean architecture, and measurable product growth.",
   profileTags: [
