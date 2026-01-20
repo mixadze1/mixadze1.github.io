@@ -10,6 +10,9 @@ const renderLabels = (selector, labels, className) => {
   if (!container) {
     return;
   }
+  if (!labels || !Array.isArray(labels)) {
+    return;
+  }
   container.innerHTML = "";
   labels.forEach((label) => {
     const span = document.createElement("span");
@@ -83,6 +86,13 @@ const setContacts = (contacts) => {
   }
 };
 
+const setAvatar = (avatarPath) => {
+  const img = document.querySelector('[data-field="avatar"]');
+  if (img) {
+    img.src = avatarPath;
+  }
+};
+
 const setCompanyLogos = (logos) => {
   const entries = [
     { key: "vaveda", selector: '[data-field="logo-vaveda"]' },
@@ -94,6 +104,21 @@ const setCompanyLogos = (logos) => {
     const img = document.querySelector(entry.selector);
     if (img) {
       img.src = logos[entry.key];
+    }
+  });
+};
+
+const setCompanyPeriods = (periods) => {
+  const entries = [
+    { key: "vaveda", selector: '[data-field="time-vaveda"]' },
+    { key: "highcore", selector: '[data-field="time-highcore"]' },
+    { key: "smartspell", selector: '[data-field="time-smartspell"]' },
+    { key: "bondigame", selector: '[data-field="time-bondigame"]' },
+  ];
+  entries.forEach((entry) => {
+    const element = document.querySelector(entry.selector);
+    if (element) {
+      element.textContent = periods[entry.key];
     }
   });
 };
@@ -113,13 +138,19 @@ const applyProfileConfig = (config) => {
   setText('[data-field="profile-text"]', config.profileText);
   renderLabels('[data-field="labels"]', config.labels, "label");
   renderLabels('[data-field="profile-tags"]', config.profileTags, "label label--ghost");
-  renderLabels('[data-field="languages"]', config.languages, "label");
+  renderLabels('[data-field="languages"]', config.languages, "label label--ghost");
+  setAvatar(config.avatar);
   setContacts(config.contacts);
   setCompanyLogos(config.companyLogos);
+  setCompanyPeriods(config.companyPeriods);
   setCompanyGames(config.companyGames);
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (typeof profileConfig === 'undefined') {
+    console.error('profileConfig is not defined');
+    return;
+  }
   applyProfileConfig(profileConfig);
 });
 

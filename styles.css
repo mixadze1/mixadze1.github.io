@@ -121,6 +121,15 @@ a {
   color: #0f172a;
 }
 
+[data-field="languages"] .label {
+  font-size: 14px;
+  padding: 8px 16px;
+  background: #1e293b;
+  color: #f8fafc;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 
 .hero__contacts {
   display: flex;
