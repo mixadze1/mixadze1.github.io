@@ -216,18 +216,15 @@ a {
   color: var(--color-paper);
 }
 
-.card,
-.timeline__item,
 .preview-card {
   transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease,
     transform 0.3s ease;
 }
 
-.card:hover,
-.timeline__item:hover,
 .preview-card:hover {
   border-color: rgba(57, 255, 20, 0.32);
   box-shadow: 0 12px 32px rgba(57, 255, 20, 0.08);
+  transform: translateY(-4px);
 }
 
 .card p {
@@ -339,6 +336,8 @@ a {
   display: flex;
   gap: 18px;
   overflow-x: auto;
+  padding-top: 8px;
+  padding-inline: 2px;
   padding-bottom: 10px;
   scroll-snap-type: x mandatory;
 }
