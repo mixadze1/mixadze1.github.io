@@ -102,6 +102,8 @@ a {
 .avatar {
   width: 140px;
   height: 140px;
+  aspect-ratio: 1;
+  flex: 0 0 140px;
   border-radius: 32px;
   overflow: hidden;
   border: 1px solid rgba(57, 255, 20, 0.35);
@@ -466,6 +468,7 @@ a {
   .avatar {
     width: 120px;
     height: 120px;
+    flex-basis: 120px;
   }
 }
 
@@ -485,4 +488,3 @@ a {
     transition: none !important;
   }
 }
-

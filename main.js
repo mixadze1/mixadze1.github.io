@@ -304,18 +304,22 @@ const initFallingSymbols = () => {
 
   const resize = () => {
     const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const widthChanged = window.innerWidth !== width;
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = width * pixelRatio;
     canvas.height = height * pixelRatio;
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-    glyphs = spawn(Math.min(90, Math.max(28, Math.round((width * height) / 24000))));
+    if (widthChanged || glyphs.length === 0) {
+      glyphs = spawn(Math.min(90, Math.max(28, Math.round((width * height) / 24000))));
+    }
     if (reducedMotion) {
       draw(0);
     }
   };
 
   const onPointerMove = (event) => {
+    if (event.pointerType !== "mouse") return;
     pointer.x = event.clientX;
     pointer.y = event.clientY;
   };

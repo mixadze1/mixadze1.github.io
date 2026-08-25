@@ -1,6 +1,6 @@
 const profileConfig = {
   name: "Michael Arustamian",
-  role: "Game Developer&Lead",
+  role: "Game Developer",
   summary: "7+ years in development · Architecture · Scalability · Performance · Live ops",
   location: "Spain · GMT +2",
   avatar: "assets/avatar.png",
