@@ -1,8 +1,8 @@
 const profileConfig = {
   name: "Michael Arustamian",
-  role: "GAME Developer & CTO",
+  role: "Game Developer&Lead",
   summary: "7+ years in development · Architecture · Scalability · Performance · Live ops",
-  location: "Georgia · GMT +4",
+  location: "Spain · GMT +2",
   avatar: "assets/avatar.png",
   labels: ["C# .Net", "ECS", "TS", "AWS", "Unity"],
   profileText:
@@ -145,4 +145,3 @@ const profileConfig = {
   
   ],
 };
-
