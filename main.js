@@ -205,7 +205,151 @@ const applyProfileConfig = (config) => {
   renderPetProjects('[data-field="pet-projects"]', config.petProjects);
 };
 
+const initFallingSymbols = () => {
+  const canvas = document.querySelector(".symbols-background");
+  const ctx = canvas?.getContext("2d");
+  if (!canvas || !ctx) {
+    return;
+  }
+
+  const chars = ["0", "0", "0", "Z", "Z", "{", "}", "<", ">", ";"];
+  const font = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
+  const repelRadius = 130;
+  const pointer = { x: -100000, y: -100000 };
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let glyphs = [];
+  let width = 0;
+  let height = 0;
+  let frame = 0;
+  let lastTime = 0;
+
+  const spawn = (count) =>
+    Array.from({ length: count }, () => ({
+      char: chars[Math.floor(Math.random() * chars.length)],
+      size: 12 + Math.random() * 30,
+      speed: 18 + Math.random() * 45,
+      alpha: 0.05 + Math.random() * 0.13,
+      swayAmp: 6 + Math.random() * 18,
+      swayFreq: 0.2 + Math.random() * 0.5,
+      phase: Math.random() * Math.PI * 2,
+      rotation: (Math.random() - 0.5) * 0.5,
+      x: Math.random() * width,
+      y: Math.random() * height,
+      offsetX: 0,
+      offsetY: 0,
+      velocityX: 0,
+      velocityY: 0,
+    }));
+
+  const position = (glyph, time) => [
+    glyph.x + Math.sin(time * glyph.swayFreq + glyph.phase) * glyph.swayAmp + glyph.offsetX,
+    glyph.y + glyph.offsetY,
+  ];
+
+  const draw = (time) => {
+    ctx.clearRect(0, 0, width, height);
+    glyphs.forEach((glyph) => {
+      const [x, y] = position(glyph, time);
+      const distance = Math.hypot(x - pointer.x, y - pointer.y);
+      const near = Math.max(0, 1 - distance / (repelRadius * 1.4));
+      const alpha = Math.min(0.85, glyph.alpha + near * near * 0.4);
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(glyph.rotation);
+      ctx.font = `${glyph.size}px ${font}`;
+      ctx.fillStyle =
+        near > 0.02
+          ? `rgba(57, 255, 20, ${alpha})`
+          : `rgba(237, 237, 242, ${alpha})`;
+      ctx.fillText(glyph.char, 0, 0);
+      ctx.restore();
+    });
+  };
+
+  const update = (deltaTime, time) => {
+    glyphs.forEach((glyph) => {
+      glyph.y += glyph.speed * deltaTime;
+      if (glyph.y - glyph.size > height + 40) {
+        glyph.y = -40;
+        glyph.x = Math.random() * width;
+      }
+
+      const [x, y] = position(glyph, time);
+      const dx = x - pointer.x;
+      const dy = y - pointer.y;
+      const distance = Math.hypot(dx, dy);
+      let accelX = -42 * glyph.offsetX - 9 * glyph.velocityX;
+      let accelY = -42 * glyph.offsetY - 9 * glyph.velocityY;
+
+      if (distance > 0.001 && distance < repelRadius) {
+        const push = (1 - distance / repelRadius) ** 2 * 2600;
+        accelX += (dx / distance) * push;
+        accelY += (dy / distance) * push;
+      }
+
+      glyph.velocityX += accelX * deltaTime;
+      glyph.velocityY += accelY * deltaTime;
+      glyph.offsetX += glyph.velocityX * deltaTime;
+      glyph.offsetY += glyph.velocityY * deltaTime;
+    });
+  };
+
+  const loop = (timestamp) => {
+    const deltaTime = Math.min((timestamp - lastTime) / 1000, 0.05);
+    lastTime = timestamp;
+    update(deltaTime, timestamp / 1000);
+    draw(timestamp / 1000);
+    frame = requestAnimationFrame(loop);
+  };
+
+  const resize = () => {
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const widthChanged = window.innerWidth !== width;
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = width * pixelRatio;
+    canvas.height = height * pixelRatio;
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+    if (widthChanged || glyphs.length === 0) {
+      glyphs = spawn(Math.min(90, Math.max(28, Math.round((width * height) / 24000))));
+    }
+    if (reducedMotion) {
+      draw(0);
+    }
+  };
+
+  const onPointerMove = (event) => {
+    if (event.pointerType !== "mouse") return;
+    pointer.x = event.clientX;
+    pointer.y = event.clientY;
+  };
+  const onPointerLeave = () => {
+    pointer.x = -100000;
+    pointer.y = -100000;
+  };
+
+  resize();
+  window.addEventListener("resize", resize);
+  if (!reducedMotion) {
+    window.addEventListener("pointermove", onPointerMove);
+    document.documentElement.addEventListener("mouseleave", onPointerLeave);
+    frame = requestAnimationFrame(loop);
+  }
+
+  window.addEventListener(
+    "pagehide",
+    () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("resize", resize);
+      window.removeEventListener("pointermove", onPointerMove);
+      document.documentElement.removeEventListener("mouseleave", onPointerLeave);
+    },
+    { once: true },
+  );
+};
+
 document.addEventListener("DOMContentLoaded", () => {
+  initFallingSymbols();
   if (typeof profileConfig === 'undefined') {
     console.error('profileConfig is not defined');
     return;

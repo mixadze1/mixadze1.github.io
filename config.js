@@ -1,19 +1,22 @@
 const profileConfig = {
   name: "Michael Arustamian",
-  role: "Game Developer&Lead",
-  summary: "7+ years in development · Architecture · Scalability · Performance · Live ops",
+  role: "Technical Lead & Unity Developer",
+  summary: "7+ years · Technical leadership · Architecture · Shipped games",
   location: "Spain · GMT +2",
   avatar: "assets/avatar.png",
-  labels: ["C# .Net", "ECS", "TS", "AWS", "Unity"],
+  labels: ["Unity", "C#/.NET", "Architecture", "Team Leadership", "CI/CD"],
   profileText:
-    "Game Developer with 7+ years of experience building scalable systems, meta mechanics, and live features. Experienced in mobile, PC, balancing performance, clean architecture, and measurable product growth.",
+    "Technical Lead and hands-on Unity developer with 7+ years of commercial experience across four game studios, delivering released games and live products. Owns architecture, technical planning, code quality, feature decomposition, mentoring, and reliable delivery from concept to production. Combines engineering depth with product thinking and measurable business impact.",
   profileTags: [
-    "Architecture",
-    "Analytics",
-    "Live Ops",
-    "A/B Testing",
-    "Monetization",
+    "Architecture Ownership",
+    "Engineering Processes",
+    "Code Review",
+    "Technical Documentation",
+    "Technical Interviews",
+    "Developer Grading",
     "Team Mentoring",
+    "Release Delivery",
+    "Live Ops",
   ],
   contacts: {
     email: "mixadze.1.1.1@gmail.com",
@@ -46,6 +49,16 @@ const profileConfig = {
         title: "Match Junk",
         url: "https://play.google.com/store/apps/details?id=games.match.junk",
         image: "assets/media/match-junk.png",
+      },
+      {
+        title: "Hole Rush",
+        url: "https://www.amazon.in/PAVETRA-LTD-Whole-Hole-Rush/dp/B0DHDGNW5F",
+        image: "assets/media/hole-rush.png",
+      },
+      {
+        title: "Tower War",
+        url: "https://play.google.com/store/apps/details?id=games.vaveda.militaryoverturn",
+        image: "assets/media/tower-war.png",
       },
     ],
     highcore: [
