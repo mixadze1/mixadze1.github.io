@@ -30,7 +30,7 @@ const profileConfig = {
     bondigame: "assets/companies/bondigame.png",
   },
   companyPeriods: {
-    vaveda: "Aug 2025",
+    vaveda: "Apr 2025",
     highcore: "May 2023 – Aug 2025",
     smartspell: "Mar 2022 – Apr 2023",
     bondigame: "Sep 2018 – Mar 2022",
