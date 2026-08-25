@@ -47,6 +47,16 @@ const profileConfig = {
         url: "https://play.google.com/store/apps/details?id=games.match.junk",
         image: "assets/media/match-junk.png",
       },
+      {
+        title: "Hole Rush",
+        url: "https://www.amazon.in/PAVETRA-LTD-Whole-Hole-Rush/dp/B0DHDGNW5F",
+        image: "assets/media/hole-rush.png",
+      },
+      {
+        title: "Tower War",
+        url: "https://play.google.com/store/apps/details?id=games.vaveda.militaryoverturn",
+        image: "assets/media/tower-war.png",
+      },
     ],
     highcore: [
       {
