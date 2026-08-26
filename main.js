@@ -212,7 +212,27 @@ const initFallingSymbols = () => {
     return;
   }
 
-  const chars = ["0", "0", "0", "Z", "Z", "{", "}", "<", ">", ";"];
+  const chars = [
+    "0",
+    "1",
+    "{",
+    "}",
+    "<",
+    ">",
+    ";",
+    "[",
+    "]",
+    "(",
+    ")",
+    "/",
+    "\\",
+    "+",
+    "-",
+    "*",
+    "=",
+    "#",
+    "&",
+  ];
   const font = "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace";
   const repelRadius = 130;
   const pointer = { x: -100000, y: -100000 };
@@ -224,8 +244,8 @@ const initFallingSymbols = () => {
   let lastTime = 0;
 
   const spawn = (count) =>
-    Array.from({ length: count }, () => ({
-      char: chars[Math.floor(Math.random() * chars.length)],
+    Array.from({ length: count }, (_, index) => ({
+      char: chars[index % chars.length],
       size: 12 + Math.random() * 30,
       speed: 18 + Math.random() * 45,
       alpha: 0.05 + Math.random() * 0.13,
@@ -272,6 +292,7 @@ const initFallingSymbols = () => {
       if (glyph.y - glyph.size > height + 40) {
         glyph.y = -40;
         glyph.x = Math.random() * width;
+        glyph.char = chars[Math.floor(Math.random() * chars.length)];
       }
 
       const [x, y] = position(glyph, time);
@@ -356,4 +377,3 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   applyProfileConfig(profileConfig);
 });
-
